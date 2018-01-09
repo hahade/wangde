@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.ssm.apply.mapper.ApplytypeMapper" >
+  <resultMap id="BaseResultMap" type="org.ssm.apply.domain.Applytype" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="aname" property="aname" jdbcType="VARCHAR" />
+    <result column="assigner" property="assigner" jdbcType="VARCHAR" />
+    <result column="aid" property="aid" jdbcType="INTEGER" />
+    <result column="isdelete" property="isdelete" jdbcType="INTEGER" />
+    <result column="createtime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="updatetime" property="updatetime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from applytype
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.ssm.apply.domain.Applytype" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="BEFORE" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into applytype (id, aname, assigner, 
+      aid, isdelete, createtime, 
+      updatetime)
+    values (#{id,jdbcType=INTEGER}, #{aname,jdbcType=VARCHAR}, #{assigner,jdbcType=VARCHAR}, 
+      #{aid,jdbcType=INTEGER}, #{isdelete,jdbcType=INTEGER}, #{createtime,jdbcType=TIMESTAMP}, 
+      #{updatetime,jdbcType=TIMESTAMP})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="org.ssm.apply.domain.Applytype" >
+    update applytype
+    set aname = #{aname,jdbcType=VARCHAR},
+      assigner = #{assigner,jdbcType=VARCHAR},
+      aid = #{aid,jdbcType=INTEGER},
+      isdelete = #{isdelete,jdbcType=INTEGER},
+      createtime = #{createtime,jdbcType=TIMESTAMP},
+      updatetime = #{updatetime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select id, aname, assigner, aid, isdelete, createtime, updatetime
+    from applytype
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select id, aname, assigner, aid, isdelete, createtime, updatetime
+    from applytype
+  </select>
+</mapper>

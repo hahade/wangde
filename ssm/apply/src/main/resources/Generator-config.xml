@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+	<!-- targetRuntime:默认使用MyBatis3 表示 生成代码包含单表基本操作和复杂查询(Example) MyBatis3Simple 
+		生成代码基于单表基础操作 flat:该模型为每一张表只生成一个实体类。这个实体类包含表中的所有字段。**这种模型最简单，推荐使用。** -->
+	<context id="MysqlContext" targetRuntime="MyBatis3Simple"
+		defaultModelType="flat">
+
+		<!-- 表示对于生成映射文件中 涉及到mysql关键字自动使用分隔符进行引用，默认使用单引号 -->
+		<property name="beginningDelimiter" value="`" />
+		<property name="endingDelimiter" value="`" />
+
+		<!-- 生成注释 -->
+		<commentGenerator>
+			<!-- 配置是否禁止生成注释，默认为：false 设置为true表示不生成注释 -->	
+			<property name="suppressAllComments" value="true" />
+			<!-- 设置是否在生成注释 有带有时间戳内容（推荐不使用 设置为：true） -->
+			<property name="suppressDate" value="true" />
+		</commentGenerator>
+
+		<!-- 配置关联数据库信息 -->
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+			connectionURL="jdbc:mysql://localhost:3306/applyadmin" userId="root"
+			password="">
+		</jdbcConnection>
+
+		<!-- 配置生成实体对象targetPackage 表示生成文件对应包  targetProject:表示代码生成存放位置-->
+		<javaModelGenerator targetPackage="org.ssm.apply.domain"
+			targetProject="src\main\java">
+			<!-- trimStrings:是否对数据库查询结果进行trim操作，
+			如果设置为true就会生成类似这样public void setUsername(String username) 
+			{this.username = username == null ? null : username.trim();}的setter方法。
+			默认值为false。 -->
+			<property name="trimStrings" value="true" />
+		</javaModelGenerator>
+
+		<!--配置映射文件 targetPackage 配置映射文件(xxMaper.xml)保存位置 如：org.xiaoyi.ssm.mapper  targetProject表示保存路径-->
+		<sqlMapGenerator targetPackage="org.ssm.apply.mapper"
+			targetProject="src\main\resources" />
+
+		<!-- 配置生成映射文件方式 XMLMAPPER:所有的方法都在XML中，
+		接口调用依赖XML文件 
+		targetPackage 表示映射接口生成位置：如 org.xiaoyi.ssm.mapper
+		-->	
+		<javaClientGenerator type="XMLMAPPER"
+			targetPackage="org.ssm.apply.mapper"  targetProject="src\main\java" />
+			
+		<!-- 配置指定生成相关实体 映射器 映射文件 对应的表 如配置：% 表示对应所有表 -->	
+		<table tableName="%">
+			<generatedKey column="id" sqlStatement="Mysql" />
+		</table>
+	</context>
+</generatorConfiguration>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<title>KIT ADMIN</title>
+		<link rel="stylesheet" href="./plugins/layui/css/layui.css" media="all" />
+		<link rel="stylesheet" href="./plugins/font-awesome/css/font-awesome.min.css" media="all" />
+		<link rel="stylesheet" href="./src/css/app.css" media="all" />
+		<link rel="stylesheet" href="./src/css/themes/default.css" media="all" id="skin" kit-skin />
+	</head>
+
+	<body>
+		<div id="setting" style="margin-top: 100px;">
+			<div class="row">
+				<div class="layui-col-md-offset1 layui-col-md4">
+					<fieldset class="layui-elem-field layui-field-title">
+						<legend>
+							修改个人信息
+						</legend>
+					</fieldset>
+
+					<form class="layui-form">
+
+						<div class="layui-form-item">
+							<label class="layui-form-label">用户ID</label>
+							<div class="layui-input-block">
+								<input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入ID" class="layui-input">
+							</div>
+						</div>
+						<div class="layui-form-item">
+							<label class="layui-form-label">姓名</label>
+							<div class="layui-input-block">
+								<input type="text" name="username" lay-verify="required" placeholder="请输入姓名" autocomplete="off" class="layui-input">
+							</div>
+						</div>
+						<div class="layui-form-item">
+							<label class="layui-form-label">电话</label>
+							<div class="layui-input-block">
+								<input type="text" name="username" lay-verify="required" placeholder="请输入电话" autocomplete="off" class="layui-input">
+							</div>
+						</div>
+						<div class="layui-form-item">
+							<label class="layui-form-label">邮箱</label>
+							<div class="layui-input-block">
+								<input type="text" name="username" lay-verify="required" placeholder="请输入邮箱" autocomplete="off" class="layui-input">
+							</div>
+						</div>
+						<div class="layui-form-item">
+							<label class="layui-form-label">部门</label>
+							<div class="layui-input-block">
+								<select name="city" lay-verify="required">
+									<option value="">请选择</option>
+									<option value="0">北京</option>
+									<option value="1">上海</option>
+									<option value="2">广州</option>
+									<option value="3">深圳</option>
+									<option value="4">杭州</option>
+								</select>
+							</div>
+						</div>
+						<div class="layui-form-item layui-col-md-offset3">
+							<input type="button" name="email" autocomplete="off" class="layui-btn layui-btn-danger" value="确认修改">
+							<input type="button" name="email" autocomplete="off" class="layui-btn layui-btn-normal" value="取消">
+						</div>
+					</form>
+
+				</div>
+				<div class="layui-col-md-offset1 layui-col-md4">
+					<fieldset class="layui-elem-field layui-field-title">
+						<legend>
+							修改密码
+						</legend>
+					</fieldset>
+					<form class="layui-form">
+						<div class="layui-form-item">
+							<label class="layui-form-label">原密码</label>
+							<div class="layui-input-block">
+								<input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入原密码" class="layui-input">
+							</div>
+						</div>
+						<div class="layui-form-item">
+							<label class="layui-form-label">新密码</label>
+							<div class="layui-input-block">
+								<input type="text" name="username" lay-verify="required" placeholder="请输入新密码" autocomplete="off" class="layui-input">
+							</div>
+						</div>
+						<div class="layui-form-item">
+							<label class="layui-form-label">确认新密码</label>
+							<div class="layui-input-block">
+								<input type="text" name="username" lay-verify="required" placeholder="请确认新密码" autocomplete="off" class="layui-input">
+							</div>
+						</div>
+						<div class="layui-form-item layui-col-md-offset3">
+							<input type="button" name="email" autocomplete="off" class="layui-btn layui-btn-danger" value="确认修改">
+							<input type="button" name="email" autocomplete="off" class="layui-btn layui-btn-normal" value="取消">
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+
+		<script src="./plugins/layui/layui.js"></script>
+		<script type="text/javascript">
+			layui.use('form', function() {
+				var form = layui.form;
+
+				//监听提交
+				form.on('submit(formDemo)', function(data) {
+					layer.msg(JSON.stringify(data.field));
+					return false;
+				});
+			});
+		</script>
+	</body>
+
+</html>

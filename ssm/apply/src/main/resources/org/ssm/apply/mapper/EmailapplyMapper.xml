@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.ssm.apply.mapper.EmailapplyMapper" >
+  <resultMap id="BaseResultMap" type="org.ssm.apply.domain.Emailapply" >
+    <id column="eid" property="eid" jdbcType="INTEGER" />
+    <result column="zone" property="zone" jdbcType="VARCHAR" />
+    <result column="worksite" property="worksite" jdbcType="VARCHAR" />
+    <result column="ename" property="ename" jdbcType="VARCHAR" />
+    <result column="allname" property="allname" jdbcType="VARCHAR" />
+    <result column="isdelete" property="isdelete" jdbcType="INTEGER" />
+    <result column="createtime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="updatetime" property="updatetime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from emailapply
+    where eid = #{eid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.ssm.apply.domain.Emailapply" >
+    insert into emailapply (eid, zone, worksite, 
+      ename, allname, isdelete, 
+      createtime, updatetime)
+    values (#{eid,jdbcType=INTEGER}, #{zone,jdbcType=VARCHAR}, #{worksite,jdbcType=VARCHAR}, 
+      #{ename,jdbcType=VARCHAR}, #{allname,jdbcType=VARCHAR}, #{isdelete,jdbcType=INTEGER}, 
+      #{createtime,jdbcType=TIMESTAMP}, #{updatetime,jdbcType=TIMESTAMP})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="org.ssm.apply.domain.Emailapply" >
+    update emailapply
+    set zone = #{zone,jdbcType=VARCHAR},
+      worksite = #{worksite,jdbcType=VARCHAR},
+      ename = #{ename,jdbcType=VARCHAR},
+      allname = #{allname,jdbcType=VARCHAR},
+      isdelete = #{isdelete,jdbcType=INTEGER},
+      createtime = #{createtime,jdbcType=TIMESTAMP},
+      updatetime = #{updatetime,jdbcType=TIMESTAMP}
+    where eid = #{eid,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select eid, zone, worksite, ename, allname, isdelete, createtime, updatetime
+    from emailapply
+    where eid = #{eid,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select eid, zone, worksite, ename, allname, isdelete, createtime, updatetime
+    from emailapply
+  </select>
+</mapper>

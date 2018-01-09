@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.ssm.apply.mapper.UserMapper" >
+  <resultMap id="BaseResultMap" type="org.ssm.apply.domain.User" >
+    <id column="uid" property="uid" jdbcType="INTEGER" />
+    <result column="uname" property="uname" jdbcType="VARCHAR" />
+    <result column="upassword" property="upassword" jdbcType="VARCHAR" />
+    <result column="usalt" property="usalt" jdbcType="DOUBLE" />
+    <result column="uemail" property="uemail" jdbcType="VARCHAR" />
+    <result column="deptname" property="deptname" jdbcType="VARCHAR" />
+    <result column="utypeid" property="utypeid" jdbcType="INTEGER" />
+    <result column="deptid" property="deptid" jdbcType="INTEGER" />
+    <result column="isdelete" property="isdelete" jdbcType="INTEGER" />
+    <result column="createtime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="updatetime" property="updatetime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from user
+    where uid = #{uid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.ssm.apply.domain.User" >
+    insert into user (uid, uname, upassword, 
+      usalt, uemail, deptname, 
+      utypeid, deptid, isdelete, 
+      createtime, updatetime)
+    values (#{uid,jdbcType=INTEGER}, #{uname,jdbcType=VARCHAR}, #{upassword,jdbcType=VARCHAR}, 
+      #{usalt,jdbcType=DOUBLE}, #{uemail,jdbcType=VARCHAR}, #{deptname,jdbcType=VARCHAR}, 
+      #{utypeid,jdbcType=INTEGER}, #{deptid,jdbcType=INTEGER}, #{isdelete,jdbcType=INTEGER}, 
+      #{createtime,jdbcType=TIMESTAMP}, #{updatetime,jdbcType=TIMESTAMP})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="org.ssm.apply.domain.User" >
+    update user
+    set uname = #{uname,jdbcType=VARCHAR},
+      upassword = #{upassword,jdbcType=VARCHAR},
+      usalt = #{usalt,jdbcType=DOUBLE},
+      uemail = #{uemail,jdbcType=VARCHAR},
+      deptname = #{deptname,jdbcType=VARCHAR},
+      utypeid = #{utypeid,jdbcType=INTEGER},
+      deptid = #{deptid,jdbcType=INTEGER},
+      isdelete = #{isdelete,jdbcType=INTEGER},
+      createtime = #{createtime,jdbcType=TIMESTAMP},
+      updatetime = #{updatetime,jdbcType=TIMESTAMP}
+    where uid = #{uid,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select uid, uname, upassword, usalt, uemail, deptname, utypeid, deptid, isdelete, 
+    createtime, updatetime
+    from user
+    where uid = #{uid,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select uid, uname, upassword, usalt, uemail, deptname, utypeid, deptid, isdelete, 
+    createtime, updatetime
+    from user
+  </select>
+</mapper>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<title>KIT ADMIN</title>
+		<link rel="stylesheet" href="./plugins/layui/css/layui.css" media="all" />
+		<link rel="stylesheet" href="./plugins/font-awesome/css/font-awesome.min.css" media="all" />
+		<link rel="stylesheet" href="./src/css/app.css" media="all" />
+		<link rel="stylesheet" href="./src/css/themes/default.css" media="all" id="skin" kit-skin />
+	</head>
+
+	<body>
+		<fieldset class="layui-elem-field layui-field-title">
+			<legend>
+				申请管理
+			</legend>
+		</fieldset>
+
+		<form class="layui-form">
+			<div class="layui-form-item">
+				<div class="layui-inline">
+					<label class="layui-form-label">申请单号</label>
+					<div class="layui-input-inline">
+						<input type="text" name="phone" autocomplete="off" class="layui-input">
+					</div>
+				</div>
+				<div class="layui-inline">
+					<label class="layui-form-label">申请单类型</label>
+					<div class="layui-input-inline">
+						<select name="modules">
+							<option value="">请选择</option>
+							<option value="1">layer</option>
+							<option value="2">form</option>
+							<option value="3">layim</option>
+						</select>
+					</div>
+				</div>
+				<div class="layui-inline">
+					<label class="layui-form-label">申请单标题</label>
+					<div class="layui-input-inline">
+						<input type="text" name="email" autocomplete="off" class="layui-input">
+					</div>
+				</div>
+				<div class="layui-inline">
+					<label class="layui-form-label">申请单状态</label>
+					<div class="layui-input-block">
+						<input type="radio" name="sex" value="待申请" title="待申请" checked="">
+						<input type="radio" name="sex" value="已申请" title="已申请">
+						<input type="radio" name="sex" value="全部" title="全部">
+					</div>
+				</div>
+				<div class="layui-inline">
+					<input type="button" name="email" autocomplete="off" class="layui-btn layui-btn-normal" value="查询">
+				</div>
+			</div>
+		</form>
+
+		<table id="dateTable" class="layui-table">
+			<thead>
+				<tr>
+					<th><input type="checkbox" class="my-checkbox" /></th>
+					<th>序号</th>
+					<th>申请单号</th>
+					<th>申请类型</th>
+					<th>标题</th>
+					<th>审批人</th>
+					<th>分配人</th>
+					<th>处理人</th>
+					<th>申请状态</th>
+					<th>申请日期</th>
+					<th>管理</th>
+				</tr>
+			</thead>
+			<tbody></tbody>
+		</table>
+
+		<script src="./plugins/layui/layui.js"></script>
+		<script type="text/javascript">
+			layui.use('form', function() {
+				var form = layui.form;
+
+				//监听提交
+				form.on('submit(formDemo)', function(data) {
+					layer.msg(JSON.stringify(data.field));
+					return false;
+				});
+			});
+		</script>
+	</body>
+
+</html>

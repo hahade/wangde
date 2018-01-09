@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.ssm.apply.mapper.ApplyMapper" >
+  <resultMap id="BaseResultMap" type="org.ssm.apply.domain.Apply" >
+    <id column="apid" property="apid" jdbcType="INTEGER" />
+    <result column="aid" property="aid" jdbcType="INTEGER" />
+    <result column="applytime" property="applytime" jdbcType="TIMESTAMP" />
+    <result column="statu" property="statu" jdbcType="VARCHAR" />
+    <result column="adept" property="adept" jdbcType="VARCHAR" />
+    <result column="uid" property="uid" jdbcType="INTEGER" />
+    <result column="uname" property="uname" jdbcType="VARCHAR" />
+    <result column="approve" property="approve" jdbcType="VARCHAR" />
+    <result column="assigner" property="assigner" jdbcType="VARCHAR" />
+    <result column="dealer" property="dealer" jdbcType="VARCHAR" />
+    <result column="aphone" property="aphone" jdbcType="VARCHAR" />
+    <result column="atitle" property="atitle" jdbcType="VARCHAR" />
+    <result column="areason" property="areason" jdbcType="VARCHAR" />
+    <result column="afile" property="afile" jdbcType="VARCHAR" />
+    <result column="aremark" property="aremark" jdbcType="VARCHAR" />
+    <result column="isdelete" property="isdelete" jdbcType="INTEGER" />
+    <result column="createtime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="updatetime" property="updatetime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from apply
+    where apid = #{apid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.ssm.apply.domain.Apply" >
+    insert into apply (apid, aid, applytime, 
+      statu, adept, uid, 
+      uname, approve, assigner, 
+      dealer, aphone, atitle, 
+      areason, afile, aremark, 
+      isdelete, createtime, updatetime
+      )
+    values (#{apid,jdbcType=INTEGER}, #{aid,jdbcType=INTEGER}, #{applytime,jdbcType=TIMESTAMP}, 
+      #{statu,jdbcType=VARCHAR}, #{adept,jdbcType=VARCHAR}, #{uid,jdbcType=INTEGER}, 
+      #{uname,jdbcType=VARCHAR}, #{approve,jdbcType=VARCHAR}, #{assigner,jdbcType=VARCHAR}, 
+      #{dealer,jdbcType=VARCHAR}, #{aphone,jdbcType=VARCHAR}, #{atitle,jdbcType=VARCHAR}, 
+      #{areason,jdbcType=VARCHAR}, #{afile,jdbcType=VARCHAR}, #{aremark,jdbcType=VARCHAR}, 
+      #{isdelete,jdbcType=INTEGER}, #{createtime,jdbcType=TIMESTAMP}, #{updatetime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="org.ssm.apply.domain.Apply" >
+    update apply
+    set aid = #{aid,jdbcType=INTEGER},
+      applytime = #{applytime,jdbcType=TIMESTAMP},
+      statu = #{statu,jdbcType=VARCHAR},
+      adept = #{adept,jdbcType=VARCHAR},
+      uid = #{uid,jdbcType=INTEGER},
+      uname = #{uname,jdbcType=VARCHAR},
+      approve = #{approve,jdbcType=VARCHAR},
+      assigner = #{assigner,jdbcType=VARCHAR},
+      dealer = #{dealer,jdbcType=VARCHAR},
+      aphone = #{aphone,jdbcType=VARCHAR},
+      atitle = #{atitle,jdbcType=VARCHAR},
+      areason = #{areason,jdbcType=VARCHAR},
+      afile = #{afile,jdbcType=VARCHAR},
+      aremark = #{aremark,jdbcType=VARCHAR},
+      isdelete = #{isdelete,jdbcType=INTEGER},
+      createtime = #{createtime,jdbcType=TIMESTAMP},
+      updatetime = #{updatetime,jdbcType=TIMESTAMP}
+    where apid = #{apid,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select apid, aid, applytime, statu, adept, uid, uname, approve, assigner, dealer, 
+    aphone, atitle, areason, afile, aremark, isdelete, createtime, updatetime
+    from apply
+    where apid = #{apid,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select apid, aid, applytime, statu, adept, uid, uname, approve, assigner, dealer, 
+    aphone, atitle, areason, afile, aremark, isdelete, createtime, updatetime
+    from apply
+  </select>
+</mapper>

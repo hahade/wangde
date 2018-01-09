@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<title>KIT ADMIN</title>
+		<link rel="stylesheet" href="./plugins/layui/css/layui.css" media="all" />
+		<link rel="stylesheet" href="./plugins/font-awesome/css/font-awesome.min.css" media="all" />
+		<link rel="stylesheet" href="./src/css/app.css" media="all" />
+		<link rel="stylesheet" href="./src/css/themes/default.css" media="all" id="skin" kit-skin />
+	</head>
+
+	<body>
+		<fieldset class="layui-elem-field layui-field-title">
+			<legend>
+				用户管理
+			</legend>
+		</fieldset>
+
+		<form class="layui-form">
+			<div class="layui-form-item">
+				<div class="layui-inline">
+					<label class="layui-form-label">用户ID</label>
+					<div class="layui-input-inline">
+						<input type="text" name="phone" autocomplete="off" class="layui-input">
+					</div>
+				</div>
+				<div class="layui-inline">
+					<label class="layui-form-label">用户名称</label>
+					<div class="layui-input-inline">
+						<input type="text" name="email" autocomplete="off" class="layui-input">
+					</div>
+				</div>
+				<div class="layui-inline">
+					<label class="layui-form-label">所在部门</label>
+					<div class="layui-input-inline">
+						<select name="modules">
+							<option value="">请选择</option>
+							<option value="1">layer</option>
+							<option value="2">form</option>
+							<option value="3">layim</option>
+						</select>
+					</div>
+				</div>
+				<div class="layui-inline">
+					<input type="button" name="email" autocomplete="off" class="layui-btn layui-btn-normal" value="查询">
+				</div>
+				<div class="layui-inline">
+					<input type="button" name="email" autocomplete="off" class="layui-btn layui-btn-normal" value="新建">
+				</div>
+			</div>
+		</form>
+
+		<table id="dateTable" class="layui-table">
+			<thead>
+				<tr>
+					<th><input type="checkbox" class="my-checkbox" /></th>
+					<th>序号</th>
+					<th>用户ID</th>
+					<th>姓名</th>
+					<th>邮件地址</th>
+					<th>联系电话</th>
+					<th>所在部门</th>
+					<th>管理</th>
+				</tr>
+			</thead>
+			<tbody></tbody>
+		</table>
+
+		<script src="./plugins/layui/layui.js"></script>
+		<script type="text/javascript">
+			layui.use('form', function() {
+				var form = layui.form;
+
+				//监听提交
+				form.on('submit(formDemo)', function(data) {
+					layer.msg(JSON.stringify(data.field));
+					return false;
+				});
+			});
+		</script>
+	</body>
+
+</html>

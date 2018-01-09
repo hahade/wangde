@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>Document</title>
+		<link rel="stylesheet" href="./plugins/layui/css/layui.css" media="all">
+		<link rel="stylesheet" href="./plugins/font-awesome/css/font-awesome.min.css" media="all">
+
+	</head>
+
+	<body>
+		<div class="layui-carousel" id="test1">
+			<div carousel-item>
+				<div><img src="img/197485-106.jpg" /></div>
+				<div><img src="img/198750-106.jpg" /></div>
+				<div><img src="img/231313-106.jpg" /></div>
+				<div><img src="img/306592-106.jpg" /></div>
+				<div><img src="img/355821-106.jpg" /></div>
+			</div>
+		</div>
+
+		<script src="./plugins/layui/layui.js"></script>
+		<script>
+			layui.use('carousel', function() {
+				var carousel = layui.carousel;
+				//建造实例
+				carousel.render({
+					elem: '#test1',
+					width: '100%' //设置容器宽度
+						,
+					height: '800px',
+					arrow: 'always' //始终显示箭头
+					//,anim: 'updown' //切换动画方式
+				});
+			});
+
+			layui.use('jquery', function() {
+				var $ = layui.jquery;
+				$('#test').on('click', function() {
+					parent.message.show({
+						skin: 'cyan'
+					});
+				});
+			});
+		</script>
+	</body>
+
+</html>
